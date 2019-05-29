@@ -1,0 +1,53 @@
+Database:-flight_information
+Four Tables inside flight_information:
+
+1. flights(flno int primary key,from_ varchar(20),to_ varchar(20),departs timestamp, arrives timestamp, price int, distance int)
+2. aircraft(aid int primary key, aname varchar(20), cruising_range int)
+3. employee(eid primary key,ename varchar(20),salary int)
+4. certified(aid references aircraft(aid),eid references employee(eid), primary key(aid,eid))  
+
+a.   Find the names of aircraft such that all pilots certified to operate them earn more than$80,000. 
+sol. select af.aname from aircraft af where af.aid in (select a.aid from aircraft a,certified c,employee e where a.aid=c.aid and c.eid=e.eid and e.salary>80000 group by a.aid having count(*)=(select count(*) from certified ce where ce.aid=a.aid) );
+
+b.   For each pilot who is certified for more than three aircraft, find the eid and the maximum cruisingrange of the aircraft for which she or he is certified.
+sol. select e.eid,max(cruising_range) from aircraft a,certified c,employee e where a.aid=c.aid and c.eid=e.eid and e.eid in (select c.eid from certified c group by c.eid having count(*)>3) group by e.eid;
+
+c.   Find the names of pilots whose salary is less than the price of the cheapest route from Los Angeles to Honolulu.
+sol. select e.ename from certified c,employee e where c.eid=e.eid and e.salary<(select min(f.price) from flights f where from_='Los Angeles' and to_='Honolulu');
+
+d.   For all aircraft with cruisingrange over 1000 miles, find the name of the aircraft and the average salary of all pilots certified for this aircraft. 
+sol. select a.aname,avg(salary) from aircraft a,certified c,employee e where a.cruising_range>1000 and a.aid=c.aid and c.eid=e.eid group by a.aname;
+
+e.   Find the names of pilots certified for some Boeing aircraft. 
+sol. select e.ename from aircraft a,certified c,employee e where a.aid=c.aid and c.eid=e.eid and a.aname='Boeing';
+
+f.   Find the aids of all aircraft that can be used on routes from Los Angeles to Chicago.
+sol. select a.aid from aircraft a where a.cruising_range>=any(select distance from flights where from_='Los Angeles' and to_='Chicago');
+
+g.   Identify the routes that can be piloted by every pilot who makes more than $100,000. 
+sol. create view maximum as (select e.eid,max(a.cruising_range) from aircraft a,certified c,employee e where a.aid=c.aid and c.eid=e.eid and e.salary>100000 group by e.eid);
+select f.from_,f.to_ from flights f where f.distance<=(select min(max) from maximum);
+
+h.   Print the enames of pilots who can operate planes with cruisingrange greater than 3000 miles but are not certified on any Boeing aircraft.
+sol. select e.ename from aircraft a,certified c,employee e where a.cruising_range>3000 and a.aid=c.aid and c.eid=e.eid and a.aname<>'Boeing';
+
+i.   A customer wants to travel from Madison to New York with no more than two changes of flight. List the choice of departure times from Madison if the customer wants to arrive in New York by 6 p.m.
+sol. select departs from flights where arrives<'02-06-2019 18:00:00' and flno in (select flno from flights where from_=any( select distinct to_ from flights where from_='Madison' and to_<>'New York') and to_='New York' union select flno from flights where from_='Madison' and to_='New York');
+
+
+j.   Compute the difference between the average salary of a pilot and the average salary of all employees (including pilots).
+sol. 
+
+
+
+k.   Print the name and salary of every nonpilot whose salary is more than the average salary for pilots.
+sol. select e.eid,e.ename,e.salary from employee e where e. eid not in (select em.eid from employee em,certified c where c.eid=em.eid) and e.salary>(select avg(salary) from employee emp,certified cf where cf.eid=emp.eid); 
+
+l.   Print the names of employees who are certified only on aircrafts with cruising range longer than 1000 miles.
+sol. select em.ename from employee em where em.eid in (select distinct e.eid from employee e,certified c,aircraft a where e.eid=c.eid and c.aid=a.aid except (select distinct e.eid from employee e,certified c,aircraft a where e.eid=c.eid and c.aid=a.aid and a.cruising_range<=1000));
+
+m.   Print the names of employees who are certified only on aircrafts with cruising range longer than 1000 miles, but on at least two such aircrafts.
+sol. select ename from employee where eid in ( select emp.eid from aircraft af,certified cf,employee emp where cf.aid=af.aid and cf.eid=emp.eid except ( select e.eid from aircraft a,certified c,employee e where a.aid =c.aid and c.eid=e.eid and a.cruising_range<=1000) );
+
+n.   Print the names of employees who are certified only on aircrafts with cruising range longer than 1000 miles and who are certified on some Boeing aircraft.
+sol. select ename from employee where eid in ( select e.eid from employee e,certified c,aircraft a where e.eid=c.eid and a.aid=c.aid and a.aname='Boeing' except (select emp.eid from employee emp,certified cf,aircraft af where af.aid=cf.aid and cf.eid=emp.eid and af.cruising_range<=1000) );

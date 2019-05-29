@@ -1,0 +1,94 @@
+Ubuntu Commands:
+Notations:
+         : ~$ (Means we are in User's Directory where $ is end Symbol).
+	 : /$ (Means we are in Root Directory).
+
+pwd : Gives the Complete Path of Current Directory Starting From Root Directory.
+
+cd : It is used to change the current Working Directory.
+   : cd path/DirectoryName.(Path can be Relative or Absolute.)
+   : Current Working Directory is /home/beryl/
+   : cd Desktop/chirag1(Relative)
+   : cd /home/beryl/Desktop/chirag1(Absolute).The Current Working Directory is chirag1.
+cd ~ : Brings you to the User Directory.
+cd - : Brings tyou to Previous Directory(It is like Undo Operation).
+cd .. : Brings you to Parent Directory.
+cd / : Brings to the system root Directory. 
+
+
+ls : USed to list the content inside the Directory.
+   : ls path/DirectoryName (List the content of the specified Directory)
+   : ls  (List the content of Present Directory)
+   : ls -l (List the content in long list Format) 
+   : ls -d */ (List only subDirectories of Current Directory)
+   : ls path/DirectoryName -p (List the all the Files and Sub-Directories inside the specified Directory,but Sub-Directories are represented by putting a slash at the 		end.
+   : ls -p (List the all the Files and Sub-Directories inside the current Directory,but Sub-Directories are represented by putting a slash at the end.
+   : ls path/DirectoryName-R (Displays the content of Subdirectories also)
+   : ls ~ (List out the content of Home Directory)
+   : ls .. (List out the content of Parent Directory)
+   : ls / (List out the content of root Directory)
+
+
+mkdir : Used to make a New Directoryor multiple New Directories.
+      : mkdir path/New_Directory_Name (It creates a new Directorty Under the path Speceified)
+      : mkdir path/New_Directory_Name path/New_Directory_Name path/New_Directory_Name ...
+        (It will create multile Directories under their specified Paths)
+
+rmdir : Used to Delete a Directory.That Directory should be Empty.
+      : rmdir path/Directory_Name
+      : rmdir -p path/Directory_List(It will remove Directory along with its Sub-Directories.These Sub-Directories should have following structure 1->2->3->4.Then rmdir 	-p 1/2/3/4 it will delete all Directories 1,2,3,4. But if 2 Directory also contains 2.txt file the rmdir -p 1/2/3/4 , it starts from right which is 4->Empty , 		Delete it.Then 3 which is Also Empty , Then Delet it , then 2 which contains 2.txt so it will not be able to delete 2 Sub_Directory Then Stop; 
+
+file : It is used to Determine the File Type.
+     : file path/filname (Gives the File Type of the Specified File).
+     : file test.* (Gives the File Type of all the files having name Test)
+     : file *.html (Gives the File Type of all the Files having extension .html)
+     : file *.* (Gives the File Type of all the files present inside Current Directorty)
+     : file * (Gives the file type of all the files and Directories)
+     : file path/* (list tehe Type of All files and Directories Present inside the Directory specified in the Path
+     : file [range]* (Gives the File Type of all the Files and Directories starting from character given in the range in the current Directory).
+     : file path/[1-2]* (Gives the File Type of all the Files and Directories starting from character given in the range in the specified Directory)
+
+
+touch : It is used to create a File or multiple files .
+      : touch file1
+      : touch file1 file2 file3 ...
+
+rm: Used to Delet a file or files or a Directory or Directories.
+  : rm path/filename (Delete the correcsponding file)
+  : rm -r path/Directory_Name (Delete the Corresponding Directory and all the Sub_Directories inside this Directory if not Empty)
+  : rm *extension (Delete the file having same extension as mentioned)
+  : rm path/* (Delete all files under the Directory)
+  : rm -r path/* (Remove all files and Sub_Directories under the Specified Directory)
+   
+cp : It is Used to copy one File to Another.
+   : cp path/Existing_File_Name path New_File_Name (Copies the content of existing_File_Name to New_File_Name, if the file not exist the it will create the file with 		same name and copy 	to it)
+   : cp -r path/Existeing_Directory_Name path New_Directory_Name (Copies the Existing_Directory_Name Directory inside New_Directory_Name if 					New_Directory_Name Already Exist Otherwise it copies the Content of Existing_Directory_Name Directory to New_Directory_Name Directory)
+   : cp path/Existing_FIle_or_Directory1 path/Existing_FIle_or_Directory2 ...path/Existing_FIle_or_Directory_n path/New_Directory( Copies the Existing Files and       		Directories to the New_Directory)  
+   : cp --backup : to Backup the Existing file before overWrite it.
+   : cp -p (Preserve the Attirbute of Paren File to the Child File).
+
+mv : used to move file(s) or directorie(s)
+   :  mv path/File1 path/File2 (Moves File1 to File2 and Overwrite File2 with File1)
+   : mv path/Directory1 path/Directory2 (Moves Directory1 to Directory2)
+   : It is also used for Renaming by Putting same path on both files mv path1/file1 path1/File2.
+     It will rename the File1 to File2.
+
+Permissions : In Linux Operating System Everthing is a File Like a Device is a File, a Directory is a File...And we have Certain User for Each File
+	      1. User(u) : Owner of the File
+	      2. Group(g) : A Group where Everyone has same access Right as of Others.
+	      3. Other(o) : Neither a user nor a Group.
+	      Types of access for reach File: 
+	      Read(r) : we can only read the file.
+	      write(w) : we can only write to the File.
+	      Execute(x) : we can Execute the File.
+
+
+chmod : USed to change the permissions of a file
+      : chmod Group_Name(u or g or o) + Permission_Type(r or w or x) path/filename (Adds the Permission to the Corresponding File to Corresponding User)
+      : chmod Group_Name(u or g or o) - Permission_Type(r or w or x) path/filename (Deletes  the Permission from the Corresponding File from Corresping User)
+      : chmod a+(r or w or x) path/fileName or +(r or w or x) path/fileName (Adds the Corresponding Permission to Correspoding file to All Users)
+      : chmod a-(r or w or x) path/fileName or -(r or w or x) path/fileName (Deletes the Corresponding Permission from  Correspoding file from All Users)
+      : chmod Group_Name(u or g or o)=Permissions path/fileName
+      : chmod u=rx 1.exe
+      : chmod 0-70-70-7 path/filename (This is Octal Permission First 0-7 gives Permission to User, Next to Group, Next to other)
+      : chmod 357 1.jpeg.(3 means 011 i.e  w and x permission is given to User, 5 means 101 i.e r and x prermission is given to group, 7 means 111 i.e r and w and x 		permission is given to 	  other) 
