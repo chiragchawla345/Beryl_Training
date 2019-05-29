@@ -36,8 +36,7 @@ sol. select departs from flights where arrives<'02-06-2019 18:00:00' and flno in
 
 
 j.   Compute the difference between the average salary of a pilot and the average salary of all employees (including pilots).
-sol. 
-
+sol. select ( select avg(e.salary) from aircraft a,certified c,employee,e where a.aid=c.aid and c.eid=e.eid) - ( select avg(salary) from employee ) as total_count;
 
 
 k.   Print the name and salary of every nonpilot whose salary is more than the average salary for pilots.
