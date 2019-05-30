@@ -14,9 +14,12 @@ def prime(a)
 end
 puts "Enter an Positive Integer"
 b=gets.chomp
-temp=prime(b.to_i)
-if temp==1
-	puts "Prime"
-else
-	puts "Non Prime"
+for i in 2..b.to_i
+	temp=prime(i.to_i)
+	if temp==1
+		puts "#{i} is Prime"
+	else
+		next
+	end
 end
+
