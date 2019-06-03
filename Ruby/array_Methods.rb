@@ -5,7 +5,7 @@ for i in 3..10
 	arr << i
 end
 arr << 5 << 5 << 5
-puts " arr is #{arr}"
+puts "arr is #{arr}"
 
 #arr & other_arr => Intersection of two arrays without Duplicates
 arr1 = Array (5..12)
@@ -22,7 +22,7 @@ puts "arr2 is #{arr2}"
 puts "Repeat arr2 4 times by arr2*4 #{arr2 * 4}"
 new = arr2 * " cc "
 puts "Appending cc between each two elements of array is through arr2*cc is #{new}"
-puts""
+puts ""
 
 #arr + Other_arr
 puts "arr : #{arr}"
@@ -132,7 +132,7 @@ puts ""
 
 #arr[start, length] = obj or arr or nil
 puts "arr0 is : #{arr0}"
-arr0[ 3, 2 ] = 1
+arr0[3, 2] = 1
 puts "Replacing arr[3], arr[4] with single object i.e arr0[3,2] is : #{arr0}"
 puts ""
 puts "arr0 is : #{arr0}"
@@ -169,7 +169,7 @@ new = arr.assoc("d")  #=>return the first array whose first element is "d" i.e n
 puts "#{new}"
 
 #array.clear
-puts " arr is #{arr}"
+puts "arr is #{arr}"
 arr.clear
 puts "arr after arr.clear is : #{arr}"
 puts ""
@@ -186,12 +186,12 @@ puts""
 
 #array.compact or array.compact!
 arr = 1, 2, 3, 4, 5, 6, 7
-arr[2, 2]=nil
-arr[5, 2]=nil
+arr[2, 2] = nil
+arr[5, 2] = nil
 puts "Array with nil elements are #{arr}"
 new = arr.compact!
 puts "Array after compact operation is #{new}"
-puts""
+puts ""
 
 #array.concat(other_arr)
 arr1 = 1, 3, 6, 7
@@ -216,7 +216,7 @@ puts " After Deleting nil : #{arr}"
 new = arr.delete(6)
 puts "After Deleting 6 : #{arr}"
 puts "Value returned after Deleting 6 is :#{new}"
-puts""
+puts ""
 
 #array.delete(obj){block}  Delete the object if found and return the corresponding object else return result of block
 arr = 1, 5, 9, "ch", "cc", "ch"
