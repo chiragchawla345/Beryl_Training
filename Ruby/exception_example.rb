@@ -1,10 +1,11 @@
+# Exception 
 def raise_and_rescue      
   begin
-	a=10         
+	a = 10         
     puts 'This is Before Exception Arise!'
          
     # using raise to create an exception   
-    puts a/10
+    puts a / 10
    
     puts 'After Exception' 
    
@@ -20,11 +21,11 @@ end
 
 def raise_and_rescue1      
   begin
-	a=10         
+	a = 10         
     puts 'This is Before Exception Arise!'
          
     # using raise to create an exception   
-    puts a/0
+    puts a / 0
    
     puts 'After Exception' 
    
@@ -40,5 +41,5 @@ end
    
 # calling method 
 raise_and_rescue 
-puts""
+puts ""
 raise_and_rescue1  #Exception is there

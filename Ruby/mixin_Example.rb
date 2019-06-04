@@ -15,7 +15,7 @@ class Test1
 		puts "Test1_t"
 	end
 end
-t1=Test1.new
+t1 = Test1.new
 t1.a
 t1.a
 t1.put_t

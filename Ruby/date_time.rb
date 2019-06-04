@@ -1,6 +1,10 @@
-time1=Time.new    #time object holsds the current time
+# Demonstrartion of Time class and its Methods
+
+# time1 object holsds the current time
+time1 = Time.new    
 puts "#{time1.inspect}"
-puts "#{time1}"  #both are similar representing the current time
+puts "#{time1}"  
+# both are similar representing the current time
 
 puts time1.year    # => Year of the date 
 puts time1.month   # => Month of the date (1 to 12)
@@ -13,34 +17,55 @@ puts time1.sec     # => 59
 puts time1.usec    # => 999999: microseconds
 puts time1.zone    # => "IST": timezone name
 
-time2=Time.local(2008, 7, 8, 14, 14 ,30)  #Holds the time and date provided in local timezone
+# Holds the time and date provided in local timezone
+time2 = Time.local(2008, 12, 28, 14, 14 ,30)  
 puts "#{time2}"
-time2=Time.utc(2008, 7, 8, 14, 14 ,30)  #Holds the time and date provided in UTC timezone
+# Holds the time and date provided in UTC timezone
+time2 = Time.utc(2008, 7, 8, 14, 14 ,30)  
 puts "#{time2}"  
-time2=Time.gm(2008, 7, 8, 14, 14 ,30)  #Holds the time and date provided in UTC timezone
+# Holds the time and date provided in UTC timezone
+time2 = Time.gm(2008, 7, 8, 14, 14 ,30)  
 puts "#{time2}" 
-time2=Time.local(2008) #Holds the time and date provided in local timezone (2008-01-01 00:00:00 +0530)
+# Holds the time and date provided in local timezone (2008-01-01 00:00:00 +0530)
+# we have to give atleast year, the rest arguments it assumes to be initial ones
+time2 = Time.local(2008) 
 puts "#{time2}" 
 
-arr=Time.new.to_a    #Hols all components of time in array
+# It will assume : 
+# First => Year
+# Second => Month
+# Third => Day
+# Fourth => Hour
+# Fifth => Minute
+# Sixth => Second
+time2 = Time.local(2008, 12, 30) 
+puts "#{time2}"
+
+#Hols all components of time in array
+arr=Time.new.to_a   
 p arr
 puts "#{arr}"
  
-time = Time.new
+time = Time.now
 values = time.to_a
-puts Time.utc(*values) #local scale to UTC
+# local scale to UTC
+puts Time.utc(*values) 
 
-time=Time.now.to_i #time is Converted into seconds
+# time is Converted into seconds
+time = Time.now.to_i 
+# time is Converted into seconds
 p time
 p time.class
 
-time=Time.new.to_f #time is Converted into seconds including microseconds
+#time is Converted into seconds including microseconds
+time = Time.new.to_f 
 p time
 p time.class
 
-time=Time.new
+time = Time.new
 p time
-time.gmtime  #convert to utc
+#convert Current time to utc time
+time.gmtime  
 p time
 puts ""
 time = Time.new

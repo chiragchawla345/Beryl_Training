@@ -1,5 +1,5 @@
 module Trig
-	PI=3.141592
+	PI = 3.141592
 	def Trig.sin(x)
 		puts "Trig sin value is #{x}"
 	end
@@ -8,8 +8,8 @@ module Trig
 	end
 end
 module Mortal
-	Bad=0
-	Good=1
+	Bad = 0
+	Good = 1
 	def Mortal.sin(x)
 		puts "Good" if (x==1)
 		puts "Bad" if (x==0)

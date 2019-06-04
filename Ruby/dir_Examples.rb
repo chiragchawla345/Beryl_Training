@@ -1,6 +1,9 @@
+# This Program Demonstrate Directory Operations
+
+# Change Directory
 Dir.chdir("/home/beryl/Desktop/chirag1/Beryl_Training/Ruby")
+# Present Working Directory
 puts Dir.pwd
-puts Dir.entries("/home/beryl/Desktop/chirag1/").join("  ")   #ls
-Dir.foreach("/home/beryl/Desktop/chirag1/") do |entry|
-   puts "#{entry} #{entry.class}"
-end
+
+# List the content of specified Directory 
+puts Dir.entries("/home/beryl/Desktop/chirag1/") << ("")  

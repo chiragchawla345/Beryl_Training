@@ -1,14 +1,18 @@
-a=?c
-puts "#{a.class.name}"
-puts '#{a.class.name}' #IT Does not substitute with appropriate value
+# Literals
+a = ?c
+puts "#{a} #{a.class.name}"
+#IT Does not substitute with appropriate value
+puts '#{a.class.name}' 
 puts "#{a}"
-puts "\\ \"" # " " allows any kind of escape sequence
+# " " allows any kind of escape sequence
+# ' ' allows only \\, \' these two escape sequence and no substitution
+puts "\\ \"" 
 puts "\/"
 puts "\]"
 puts "\+"
 puts "\'"
 puts "\."
-puts '\''  # Escape Squence
-puts '\\'  #Escape Sequnece ('' allows only two kind of escape sequence and no substitution)
+puts '\''  
+puts '\\'  
 puts "Hello"
-puts " This is the \C-x new Line character"
+puts "\\n is new Line character"

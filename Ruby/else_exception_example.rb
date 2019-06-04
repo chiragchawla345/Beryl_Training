@@ -1,6 +1,7 @@
+# Exception
 begin
-	a=10
-	a/10
+	a = 10
+	a / 10
 	rescue Exception=>e
 		puts e.message
 	else
@@ -8,10 +9,10 @@ begin
 	ensure
 		puts "Always"
 end
-puts""
+puts ""
 begin
-	a=10
-	a/0
+	a = 10
+	a / 0
 	rescue Exception=>e
 		puts e.message
 	else
