@@ -1,5 +1,5 @@
 module Trig
-	PI=3.141592
+	PI = 3.141592
 	def Trig.sin(x)
 		puts "Trig sin value is #{x}"
 	end
