@@ -1,0 +1,28 @@
+clone : Used to Download the Entire Repository From the Remote Server to Local Server.
+      : git clone "Repository_Link"
+
+status : It list all the files which are about to be commited.
+       : git status(All the File which is given by git status are to be committed,          		 Before Commit we have to add the file(s) to the index.
+
+add    : git add fileName.(Add a single file to the Index)
+       : git add -A.(Add all unCommitted Files to the index at once)
+       : After Adding the Uncommitted Files to the Insdex we have to Commit the File              	   to see the changes to the Local Repository.
+
+commit : USed to commit File(s).
+       : git commit -m "Commit Message".(USed to Commit a single File)
+       : git commit -a -m "Commit Message".(USed to Commit Multiple Files)
+
+branch : it is used to create a branch.
+       : (Current Branch is Master Branch)
+	 git branch Branch_Name (It will Create a Branch Under Local Repository and copy the 		 content of current branch to this New Branch) 
+       : git checkout Branch_Name (Used to Move to the Specified Branch)
+
+merge : It is used to merge two Branches Together
+      : Current Branch is Master
+        git branch Branch1(It will Merge the Branch1 to the Master Branch)
+
+Add origin : git remote add origin "Repository_Link" (It is Used to add the Origin to the Local 	     Repository so that we can Perfornm push and pull pooperations.
+
+Pull : git pull origin Branch_name (It will Pull the Specified Branch from the Remote Server's   	Repository to the current Branch of Local Respository)
+
+Push : git push origin Branch_Name (It will push the Current Branch of Local Repository to the 		Specified Branch of Remote server's Repository)
